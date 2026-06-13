@@ -12,7 +12,7 @@ const initializeFirebase = () => {
             });
 
             console.log(
-                "✅ Firebase is initialized"
+                "Firebase is initialized"
             );
         }
 
@@ -21,7 +21,7 @@ const initializeFirebase = () => {
     } catch (error) {
 
         console.error(
-            "❌ Firebase initialization error occured:",
+            "Firebase initialization error occured:",
             error.message
         );
 
