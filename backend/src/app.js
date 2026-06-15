@@ -4,10 +4,11 @@ import authRoutes from "./routes/authRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
 
 const app = express();
-
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// API Status check
 app.get("/", (req, res) => {
     res.json({
         success: true,
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
     });
 });
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/events", eventRoutes);
 
