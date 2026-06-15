@@ -7,6 +7,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
+// Establish connection to MongoDB
 connectDB();
 
 app.listen(PORT, () => {
