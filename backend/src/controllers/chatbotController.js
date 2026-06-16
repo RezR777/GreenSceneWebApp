@@ -6,7 +6,7 @@ export const sendMessage = async (req, res) => {
         success: true,
         userMessage: message,
         botResponse:
-            "Hello! I am GreenScene AI. How can I help you find campus events today?"
+            "Hello! I am Scrappy-AI. How can I help you find campus events today?"
     });
 
 };
