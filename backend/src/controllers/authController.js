@@ -2,6 +2,13 @@ import bycrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
+/*
+    Manages:
+        - User registration
+        - Login
+        - JWT authentication
+*/
+
 export const register = async (req, res) => {
     try {
         const {

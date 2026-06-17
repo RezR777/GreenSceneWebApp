@@ -3,11 +3,19 @@
   "version": "1.0.0",
   "description": "GreenScene Backend API",
   "type": "module",
+<<<<<<< HEAD
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "echo \"No tests configured\""
+=======
+  "main": "src/server.js"
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"No tests are configured\""
+>>>>>>> f76540c1203a0cbd6d3bfece25190ea9f10794b4
   },
   "keywords": [
     "greenscene",
@@ -18,7 +26,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
+<<<<<<< HEAD
     "bcryptjs": "^3.0.3",
+=======
+    "bcrypt.js": "^3.0.3",
+>>>>>>> f76540c1203a0cbd6d3bfece25190ea9f10794b4
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
