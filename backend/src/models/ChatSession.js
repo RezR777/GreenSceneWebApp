@@ -9,7 +9,7 @@ const ChatSessionSchema = new mongoose.Schema(
 
         messages: [
             {
-                role: String,
+                role: String, 
                 content: String,
                 timestamp: {
                     type: Date,
