@@ -1,24 +1,25 @@
 import { useParams } from "react-router-dom";
 
-function EventDetails() {
-
-    const { id } = useParams();
-
+const EventDetails = () => {
     return (
-        <div>
+        <div className="page">
+            <h1>Cybersecurity Workshop</h1>
+            
+            <p>Date:</p>
 
-            <h1>Event Details</h1>
+            <p>Time:</p>
 
-            <p>
-                Event ID: {id}
-            </p>
+            <p>Location:</p>
 
-            <button>
-                RSVP
-            </button>
+            <button>Open in Google Maps</button>
 
+            <button>RSVP</button>
+
+            <button>Save Event</button>
+
+        
         </div>
-    );
-}
+        );
+};
 
 export default EventDetails;
