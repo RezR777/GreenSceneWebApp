@@ -1,5 +1,5 @@
 {
-    "name": "backend",
+    "name": "frontend",
     "version": "1.0.0",
     "main": "server.js",
     "license": "ISC",
@@ -8,3 +8,4 @@
         "react-router-dom": "^7.17.0"
     }
 }
+
