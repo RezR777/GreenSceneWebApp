@@ -1,36 +1,33 @@
-function CreateEvent() {
+import React from "react";
+
+const CreateEvent = () => {
     return (
-        <div>
+        <div className="page">
+
             <h1>Create Event</h1>
 
             <form>
+            
+                <input placeholder="Title" />
 
-                <input
-                    type="text"
-                    placeholder="Event Title"
-                />
+                <textarea placeholder="Description" />
 
-                <br />
+                <input type="date" />
 
-                <textarea
-                    placeholder="Description"
-                />
+                <input type="time" />
 
-                <br />
+                <input placeholder="Location" />
 
-                <input
-                    type="date"
-                />
+                <input placeholder="Google Maps Link" />
 
-                <br />
+                <input placeholder="#tags" />
 
-                <button>
-                    Submit Event
-                </button>
-
+                <button>Submit Event</button>
+            
             </form>
+        
         </div>
-    );
-}
+        );
+};
 
 export default CreateEvent;
