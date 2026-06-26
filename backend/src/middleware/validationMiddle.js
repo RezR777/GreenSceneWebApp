@@ -1,6 +1,6 @@
 const validationMiddleWare = (
     req,
-    res,
+    res, 
     next
 ) => {
 
