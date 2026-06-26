@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenScene Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #202020;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .login-page {
+            width: min(1214px, calc(100vw - 60px));
+            min-height: min(693px, calc(100vh - 14px));
+            display: grid;
+            grid-template-columns: 59.5% 40.5%;
+            overflow: hidden;
+            border-radius: 27px;
+        }
+
+        .product-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px;
+            background: #078f43;
+            color: #fff;
+            text-align: center;
+        }
+
+        .placeholder {
+            display: grid;
+            gap: 34px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-size: clamp(2.1rem, 4vw, 3.45rem);
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .form-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 78px 60px;
+            background: #fff;
+        }
+
+        .logo {
+            width: 128px;
+            height: 34px;
+        }
+
+        .logo svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 351px;
+            margin-top: 101px;
+        }
+
+        h1 {
+            margin-bottom: 8px;
+            font-size: 27px;
+            line-height: 1.1;
+        }
+
+        .signup-text {
+            margin-bottom: 38px;
+            font-size: 12px;
+        }
+
+        a {
+            color: inherit;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        form {
+            display: grid;
+            gap: 19px;
+        }
+
+        input {
+            width: 100%;
+            height: 38px;
+            padding: 0 14px;
+            border: 0;
+            border-radius: 7px;
+            outline: none;
+            background: #e0e0e0;
+            color: #333;
+            font-size: 11px;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        input::placeholder {
+            color: #fff;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px rgba(8, 143, 67, 0.35);
+        }
+
+        button {
+            width: 100%;
+            height: 26px;
+            margin-top: 16px;
+            border: 0;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #111;
+        }
+
+        .forgot-password {
+            margin-top: 29px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                align-items: stretch;
+                padding: 18px;
+            }
+
+            .login-page {
+                width: 100%;
+                min-height: auto;
+                grid-template-columns: 1fr;
+            }
+
+            .product-panel {
+                min-height: 280px;
+                padding: 34px 24px;
+            }
+
+            .form-panel {
+                min-height: 440px;
+                padding: 20px 28px 46px;
+            }
+
+            .form-container {
+                margin-top: 58px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="login-page">
+        <section class="product-panel" aria-label="Product image placeholder">
+            <div class="placeholder">
+                <span>Logo/Product Pictures</span>
+                <span>Placeholder</span>
+            </div>
+        </section>
+
+        <section class="form-panel" aria-label="Login form">
+            <div class="logo" aria-label="GreenScene">
+                <svg viewBox="0 0 430 115" role="img" aria-labelledby="logo-title">
+                    <title id="logo-title">GreenScene</title>
+                    <g transform="translate(5 5)">
+                        <path d="M12 32c0-12 9-21 21-21h73c12 0 21 9 21 21v43c0 12-9 21-21 21H33c-12 0-21-9-21-21z" fill="#00a432"/>
+                        <path d="M24 45c0-8 6-14 14-14h63c8 0 14 6 14 14v30c0 8-6 14-14 14H38c-8 0-14-6-14-14z" fill="#fff"/>
+                        <rect x="38" width="16" height="36" rx="8" fill="#07191e"/>
+                        <rect x="88" width="16" height="36" rx="8" fill="#07191e"/>
+                        <g fill="#07191e">
+                            <circle cx="45" cy="51" r="7"/><circle cx="69" cy="51" r="7"/>
+                            <circle cx="93" cy="51" r="7"/><circle cx="45" cy="72" r="7"/>
+                            <circle cx="69" cy="72" r="7"/>
+                        </g>
+                        <circle cx="93" cy="72" r="7" fill="#00ad2e"/>
+                        <path d="M6 72c22 23 40 18 58 34 10 9 15 18 18 29 7-18 18-30 34-38 12-6 24-8 35-7-15-13-34-16-57-9-16 5-29 12-41 20 16-14 40-24 66-25-23-9-48-5-77 9-14 7-26 3-36-13z" fill="#00a432"/>
+                        <path d="M14 88c18 8 33 17 44 27-18-7-34-12-48-14zm18 19c13 4 24 9 34 16-15-4-28-7-39-7z" fill="#fff"/>
+                    </g>
+                    <text x="155" y="75" fill="#07191e" font-family="Arial, sans-serif" font-size="49" font-weight="800">Green</text>
+                    <text x="291" y="75" fill="#00a432" font-family="Arial, sans-serif" font-size="49" font-weight="800">Scene</text>
+                </svg>
+            </div>
+
+            <div class="form-container">
+                <h1>Welcome Back!</h1>
+                <p class="signup-text">
+                    Don't have an account? <a href="#">Create a new account now.</a>
+                </p>
+
+                <form action="#" method="post">
+                    <label>
+                        <span hidden>Email</span>
+                        <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                    </label>
+
+                    <label>
+                        <span hidden>Password</span>
+                        <input type="password" name="password" placeholder="Password" autocomplete="current-password" required>
+                    </label>
+
+                    <button type="submit">Login Now</button>
+                </form>
+
+                <p class="forgot-password">
+                    Forgot password? <a href="#">Click here</a>
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
