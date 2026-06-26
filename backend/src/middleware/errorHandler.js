@@ -1,5 +1,5 @@
 const errorHandler = (
-    err,
+    err, 
     req,
     res,
     next
