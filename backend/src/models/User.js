@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
       default: "student"
     }
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("User", UserSchema);
