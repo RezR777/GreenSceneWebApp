@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { loginUser }
-    from "../services/authService";
+    from "../../services/authService";
 
 import { useAuth }
     from "../hooks/useAuth";
