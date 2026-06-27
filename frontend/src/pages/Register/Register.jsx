@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { registerUser }
-    from "../services/authService";
+    from "../../services/authService";
 
 function Register() {
 
