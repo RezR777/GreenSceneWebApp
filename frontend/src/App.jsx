@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import CreateEvent from "./pages/CreateEvent/CreateEvent";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import AdminPanel from "./pages/AdminPanel/GreenAdmin";
-import SavedEvents from "./pages/SavedEvents/SavedEvents";
-import ExploreEvents from "./pages/ExploreEvents/ExploreEvents";
-import EventDetails from "./pages/EventDetails/EventDetails";
-import AIAssistant from "./pages/AIAssistant/ScrappyAI";
-import Profile from "./pages/Profile/Profile";
+import Home from "./pages/Home/Home.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Register from "./pages/Register/Register.jsx";
+import CreateEvent from "./pages/CreateEvent/CreateEvent.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import AdminPanel from "./pages/AdminPanel/GreenAdmin.jsx";
+import SavedEvents from "./pages/SavedEvents/SavedEvents.jsx";
+import ExploreEvents from "./pages/ExploreEvents/ExploreEvents.jsx";
+import EventDetails from "./pages/EventDetails/EventDetails.jsx";
+import AIAssistant from "./pages/AIAssistant/ScrappyAI.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 
 
 function App() {
@@ -18,15 +18,16 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/admin-panel" element={<AdminPanel />} />
-                <Route path="/create-event" element={<CreateEvent />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/saved-events" element={<SavedEvents />} />
-                <Route path="/event/:id" element={<EventDetails />} />
-                <Route path="/ai-assistant" element={<AIAssistant />} />
-                <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/create-event" element={<CreateEvent />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/saved-events" element={<SavedEvents />} />
+            <Route path="/explore" element={<ExploreEvents />} />
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/ai-assistant" element={<AIAssistant />} />
+            <Route path="/profile" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );
