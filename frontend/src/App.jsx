@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home/Home.jsx";
-import Login from "./pages/Login/Login.jsx";
-import Register from "./pages/Register/Register.jsx";
-import CreateEvent from "./pages/CreateEvent/CreateEvent.jsx";
-import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import AdminPanel from "./pages/AdminPanel/GreenAdmin.jsx";
-import SavedEvents from "./pages/SavedEvents/SavedEvents.jsx";
-import ExploreEvents from "./pages/ExploreEvents/ExploreEvents.jsx";
-import EventDetails from "./pages/EventDetails/EventDetails.jsx";
-import AIAssistant from "./pages/AIAssistant/ScrappyAI.jsx";
-import Profile from "./pages/Profile/Profile.jsx";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import CreateEvent from "./pages/CreateEvent/CreateEvent";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import AdminPanel from "./pages/AdminPanel/GreenAdmin";
+import SavedEvents from "./pages/SavedEvents/SavedEvents";
+import ExploreEvents from "./pages/ExploreEvents/ExploreEvents";
+import EventDetails from "./pages/EventDetails/EventDetails";
+import AIAssistant from "./pages/AIAssistant/ScrappyAI";
+import Profile from "./pages/Profile/Profile";
 
 
 function App() {
