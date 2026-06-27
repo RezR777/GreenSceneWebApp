@@ -4,7 +4,7 @@ import { loginUser }
     from "../../services/authService";
 
 import { useAuth }
-    from "../hooks/useAuth";
+    from "../../hooks/useAuth";
 
 function Login() {
 
