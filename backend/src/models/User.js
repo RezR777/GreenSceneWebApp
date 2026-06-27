@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema(
 
     // The role determines the permissions within the system
     role: {
-      type: string,
+      type: String,
       enum: ["student", "organizer", "admin"],
       default: "student"
     }
