@@ -1,90 +1,108 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
+import greenSceneIcon from "../../assets/icons/GreenSceneLogo.png";
+import leftPanelLoginImage from "../../assets/icons/login-left-panel-picture.jpeg";
 
-import { loginUser }
-    from "../../services/authService";
-
-import { useAuth }
-    from "../../hooks/useAuth";
 
 function Login() {
+  const navigate = useNavigate();
 
-    const { login } = useAuth();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-    const [email, setEmail] =
-        useState("");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    const [password, setPassword] =
-        useState("");
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        e.preventDefault();
+    console.log("Login submitted:", formData);
 
-        try {
+    /*
+      add final backend function here
+    */
 
-            const data =
-                await loginUser({
-                    email,
-                    password
-                });
+    navigate("/");
+  };
 
-            login(data);
+  return (
+    <div className="login-screen">
+      <main className="login-card">
+       <section className="login-left-panel" aria-label="GreenScene preview image">
+        <img
+          src={leftPanelLoginImage}
+          alt="GreenScene event planner preview"
+          className="login-side-image"
+        />
+        </section>
 
-            alert(
-                "Login Successful!"
-            );
+        <section className="login-right-panel">
+          <div className="greenscene-logo" aria-label="GreenScene logo">
+            <img
+              src={greenSceneIcon}
+              alt="GreenScene icon"
+              className="greenscene-logo-icon"
+            />
 
-        } catch (error) {
+          </div>
 
-            alert(
-                "Login Failed"
-            );
+          <div className="login-form-wrapper">
+            <h1>Welcome Back!</h1>
 
-        }
+            <p className="create-account-text">
+              Don&apos;t have an account?{" "}
+              <Link to="/register">Create a new account now.</Link>
+            </p>
 
-    };
+            <form onSubmit={handleSubmit} className="login-form">
+              <label htmlFor="email" className="sr-only">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
 
-    return (
-        <div style={{ padding: "2rem" }}>
-            <h1>Login</h1>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                autoComplete="current-password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
 
-            <form
-                onSubmit={handleSubmit}
-            >
-
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) =>
-                        setEmail(
-                            e.target.value
-                        )
-                    }
-                />
-
-                <br /><br />
-
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) =>
-                        setPassword(
-                            e.target.value
-                        )
-                    }
-                />
-
-                <br /><br />
-
-                <button type="submit">
-                    Login
-                </button>
-
+              <button type="submit">Login Now</button>
             </form>
-        </div>
-    );
+
+            <p className="forgot-password-text">
+              Forgot password? <Link to="/forgot-password">Click here</Link>
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 }
 
 export default Login;
