@@ -20,7 +20,7 @@ const CreateEvent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Demo event created! Backend connection can be added later.");
+    alert("Demo event created!");
   };
 
   return (
