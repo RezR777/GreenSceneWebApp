@@ -73,7 +73,7 @@ const CreateEvent = () => {
                 id="eventTime"
                 className="create-input"
                 type="text"
-                defaultValue="3:00 PM"
+                defaultValue="5:00 PM"
               />
             </div>
 
@@ -82,14 +82,13 @@ const CreateEvent = () => {
               <select
                 id="eventDuration"
                 className="create-select"
-                defaultValue="4h 30m"
+                defaultValue="1h"
               >
                 <option>30m</option>
                 <option>1h</option>
-                <option>1h 30m</option>
                 <option>2h</option>
                 <option>3h</option>
-                <option>4h 30m</option>
+                <option>4h</option>
               </select>
             </div>
           </div>
