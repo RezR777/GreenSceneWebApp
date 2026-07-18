@@ -1,1 +1,54 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  color: #00853E;
+}
+
+.dashboard-section {
+  margin-top: 40px;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(autofit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+}
+
+.event-card button {
+  margin-top: 15px;
+}
+
+.quick-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quick-buttons button {
+  background: #00853E;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.quick-buttons button:hover {
+  background: #006d31;
+}
 
