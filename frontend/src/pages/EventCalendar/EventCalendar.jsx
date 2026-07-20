@@ -1,4 +1,4 @@
-calendar-container {
+.calendar-container {
   padding: 40px;
 }
 
