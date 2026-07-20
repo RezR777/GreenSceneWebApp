@@ -9,6 +9,7 @@ import AdminPanel from "./pages/AdminPanel/GreenAdmin";
 import SavedEvents from "./pages/SavedEvents/SavedEvents";
 import ExploreEvents from "./pages/ExploreEvents/ExploreEvents";
 import EventDetails from "./pages/EventDetails/EventDetails";
+import EventCalendar from "./pages/EventCalendar/EventCalendar";
 import AIAssistant from "./pages/AIAssistant/ScrappyAI";
 import Profile from "./pages/Profile/Profile";
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/saved-events" element={<SavedEvents />} />
             <Route path="/explore" element={<ExploreEvents />} />
             <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/calendar" element={<EventCalendar />} />
             <Route path="/ai-assistant" element={<AIAssistant />} />
             <Route path="/profile" element={<Profile />} />
             </Routes>
