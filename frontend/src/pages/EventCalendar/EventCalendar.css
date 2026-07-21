@@ -1,35 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap");
+
 .calendar-container {
-  padding: 40px;
+    --unt-green: #00853e;
+    --unt-green-deep: #04361f;
+    --talon-gold: #ffc845;
+    --canvas: #f3f6f1;
+    --line: #d8e4dc;
+
+    padding: 40px;
+    background: var(--canvas);
+    min-height: 100vh;
+    font-family: "Work Sans", sans-serif;
+    color: #0b1f13;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
 .calendar-title {
-  color: #00853E;
-  margin-bottom: 30px;
+    color: var(--unt-green-deep);
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    padding-left: 14px;
+}
+
+.calendar-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    bottom: 0.1em;
+    width: 5px;
+    background: var(--talon-gold);
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--unt-green-deep);
+    border-radius: 999px;
+    padding: 6px 10px;
+}
+
+.calendar-nav button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.calendar-nav button:hover {
+    background: var(--unt-green);
+}
+
+.calendar-month-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    min-width: 150px;
+    text-align: center;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--unt-green-deep);
+    font-weight: 600;
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
 }
 
 .calendar-day {
-  background: white;
-  min-height: 120px;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+    background: white;
+    min-height: 120px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 3px 10px rgba(4, 54, 31, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .calendar-day:hover {
-  background: #eef9f2;
+    background: #eef9f2;
+    box-shadow: 0 6px 16px rgba(4, 54, 31, 0.14);
+}
+
+.calendar-day.outside-month {
+    background: #f8f8f6;
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+.calendar-day.is-today {
+    border: 2px solid var(--talon-gold);
+    padding: 8px;
+}
+
+.calendar-day-number {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--unt-green-deep);
 }
 
 .calendar-event {
-  margin-top: 10px;
-  background: #00853E;
-  color: white;
-  border-radius: 5px;
-  padding: 4px 8px;
-  font-size: .85rem;
+    background: var(--unt-green);
+    color: white;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .calendar-container {
+        padding: 20px;
+    }
+
+    .calendar-title {
+        font-size: 22px;
+    }
+
+    .calendar-day {
+        min-height: 80px;
+        padding: 6px;
+    }
+
+    .calendar-event {
+        font-size: 0.65rem;
+        padding: 3px 5px;
+    }
 }
