@@ -1,36 +1,75 @@
-.calendar-container {
-  padding: 40px;
-}
+import "./EventCalendar.css";
 
-.calendar-title {
-  color: #00853E;
-  margin-bottom: 30px;
-}
+export default function EventCalendar() {
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-}
+  return (
 
-.calendar-day {
-  background: white;
-  min-height: 120px;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
-}
+      <div className="page">
 
-.calendar-day:hover {
-  background: #eef9f2;
-}
+          <h1>Campus Event Calendar</h1>
 
-.calendar-event {
-  margin-top: 10px;
-  background: #00853E;
-  color: white;
-  border-radius: 5px;
-  padding: 4px 8px;
-  font-size: .85rem;
-}
+          <table border="1" cellPadding="10">
 
+              <thead>
+
+                    <tr>
+
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td></td>
+
+                        <td></td>
+
+                        <td>1</td>
+
+                        <td>2</td>
+
+                        <td>3</td>
+
+                        <td>4</td>
+
+                        <td>5</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>6</td>
+
+                        <td>7</td>
+
+                        <td>8</td>
+
+                        <td>9</td>
+
+                        <td>10</td>
+
+                        <td>11</td>
+
+                        <td>12</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    );
+
+}
