@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import "./CreateEvent.css";
+import { useNavigate } from "react-router-dom";
+import { useEvents } from "../../context/EventContext.jsx";
 
 const CreateEvent = () => {
   const [participantEmail, setParticipantEmail] = useState("");
   const [participants, setParticipants] = useState(["Alex", "Mia", "Sam", "+1"]);
   const [flyerName, setFlyerName] = useState("");
+  const [eventName, setEventName] = useState("");
+  const [eventDay, setEventDay] = useState("");
+  const [eventMonth, setEventMonth] = useState("");
+  const [eventYear, setEventYear] = useState("");
+  const [eventTime, setEventTime] = useState("5:00 PM");
+  const [eventLocation, setEventLocation] = useState("");
+  const [flyerFile, setFlyerFile] = useState(null); // holds base64 data URL
+  const { addEvent } = useEvents();
+  const navigate = useNavigate();
 
   const handleAddParticipant = () => {
     if (!participantEmail.trim()) return;
