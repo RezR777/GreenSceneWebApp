@@ -1,17 +1,21 @@
-import api from "./api";
+import api from "./api.js";
 
-export const getEvents = () =>
-    api.get("/events");
+export const getEvents = () => {
+  return api.get("/events");
+};
 
-export const getEvent = (id) =>
-    api.get('/events/${id}}');
+export const getEvent = (id) => {
+  return api.get(`/events/${id}`);
+};
 
-export const createEvent = (event) =>
-    api.post("/events", event);
+export const createEvent = (eventData) => {
+  return api.post("/events", eventData);
+};
 
-export const updateEvent = (id, event) =>
-    api.put('/events/${id}', event);
+export const updateEvent = (id, eventData) => {
+  return api.put(`/events/${id}`, eventData);
+};
 
-export const deleteEvent = (id) =>
-    api.delete('/events/${id}');
-
+export const deleteEvent = (id) => {
+  return api.delete(`/events/${id}`);
+};

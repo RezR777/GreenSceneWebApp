@@ -33,7 +33,6 @@ export default function Dashboard() {
                 </Link>
             </div>
 
-        </div>
       </section>
 
     <section className="dashboard-section">

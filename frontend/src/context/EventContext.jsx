@@ -1,34 +1,131 @@
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-const defaultEvents = [
-    { title: "Campus Movie Night", date: "Fri, Jun 30", time: "3:00 PM", location: "Room 201", category: "Arts / Music", image: null },
-    { title: "UNT Study Jam", date: "Sat, Jul 1", time: "1:30 PM", location: "Willis Library", category: "Academic", image: null },
-    { title: "Club Mixer", date: "Sun, Jul 2", time: "5:00 PM", location: "Union 314", category: "Social", image: null },
-    { title: "Mean Green Tailgate", date: "Mon, Jul 3", time: "6:00 PM", location: "Apogee Stadium", category: "Sports", image: null },
-    { title: "Art Workshop", date: "Tue, Jul 4", time: "2:00 PM", location: "Art Building", category: "Arts / Music", image: null },
-    { title: "Career Prep Meetup", date: "Wed, Jul 5", time: "4:00 PM", location: "Sage Hall", category: "Academic", image: null },
-];
+import {
+  createEvent,
+  getEvents,
+} from "../services/eventService.js";
 
 const EventsContext = createContext(null);
 
-export function EventsProvider({ children }) {
-    const [events, setEvents] = useState(defaultEvents);
+function extractEvents(response) {
+  const possibleEvents =
+    response?.data?.events ??
+    response?.events ??
+    response?.data ??
+    response;
 
-    const addEvent = (newEvent) => {
-        setEvents((currentEvents) => [...currentEvents, newEvent]);
+  return Array.isArray(possibleEvents) ? possibleEvents : [];
+}
+
+function extractCreatedEvent(response) {
+  return (
+    response?.data?.event ??
+    response?.event ??
+    response?.data ??
+    response
+  );
+}
+
+export function EventsProvider({ children }) {
+  /*
+   * Start with an empty array.
+   * There are no fake or placeholder events anymore.
+   */
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadEvents = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await getEvents();
+        const loadedEvents = extractEvents(response);
+
+        if (isMounted) {
+          setEvents(loadedEvents);
+        }
+      } catch (loadError) {
+        console.error("Could not load events:", loadError);
+
+        if (isMounted) {
+          setError(
+            loadError.response?.data?.message ||
+              loadError.message ||
+              "Events could not be loaded."
+          );
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
     };
 
-    return (
-        <EventsContext.Provider value={{ events, addEvent }}>
-            {children}
-        </EventsContext.Provider>
+    loadEvents();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const addEvent = async (eventData) => {
+    const response = await createEvent(eventData);
+    const createdEvent = extractCreatedEvent(response);
+
+    if (!createdEvent?._id && !createdEvent?.id) {
+      throw new Error(
+        "The server did not return the created event."
+      );
+    }
+
+    setEvents((currentEvents) => [
+      createdEvent,
+      ...currentEvents,
+    ]);
+
+    return createdEvent;
+  };
+
+  const findEventById = (eventId) => {
+    return events.find(
+      (event) =>
+        String(event._id || event.id) === String(eventId)
     );
+  };
+
+  return (
+    <EventsContext.Provider
+      value={{
+        events,
+        loading,
+        error,
+        addEvent,
+        findEventById,
+      }}
+    >
+      {children}
+    </EventsContext.Provider>
+  );
 }
 
 export function useEvents() {
-    const context = useContext(EventsContext);
-    if (!context) {
-        throw new Error("useEvents must be used within an EventsProvider");
-    }
-    return context;
+  const context = useContext(EventsContext);
+
+  if (!context) {
+    throw new Error(
+      "useEvents must be used within an EventsProvider"
+    );
+  }
+
+  return context;
 }
