@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
-import { getToken, logoutUser } from "../services/authService";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export const useAuth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const context = useContext(AuthContext);
 
-  useEffect(() => {
-    const token = getToken();
-    setIsLoggedIn(!!token);
-  }, []);
+  if (!context) {
+    throw new Error("useAuth must be used inside an AuthProvider");
+  }
 
-  const login = () => {
-    setIsLoggedIn(true);
-  };
-
-  const logout = () => {
-    logoutUser();
-    setIsLoggedIn(false);
-  };
-
-  return {
-    isLoggedIn,
-    login,
-    logout
-  };
+  return context;
 };
