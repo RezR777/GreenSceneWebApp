@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 
 import aiBotIcon from "../../assets/icons/GreenSceneAIBot.png";
+import ChatWidget from "../../components/Chatbot/ChatWidget";
 import profileIcon from "../../assets/icons/white-profile-icon.jpg";
 
 import { useEvents } from "../../context/EventContext.jsx";
@@ -436,7 +437,7 @@ function Home() {
 
         <nav className="nav-links" aria-label="Main navigation">
           <Link to="/explore-events">Discover Clubs</Link>
-          <Link to="/event-calendar">Event Calendar</Link>
+          <Link to="/calendar">Event Calendar</Link>
           <Link to="/create-event">Create Event</Link>
           <Link to="/profile">Settings</Link>
         </nav>
@@ -656,13 +657,7 @@ function Home() {
           )}
       </section>
 
-      <Link
-        className="chatbot-button"
-        to="/ai-assistant"
-        aria-label="Open the GreenScene AI assistant"
-      >
-        <img src={aiBotIcon} alt="" />
-      </Link>
+      <ChatWidget events={events} />
     </main>
   );
 }

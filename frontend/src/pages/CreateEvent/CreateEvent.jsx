@@ -80,7 +80,7 @@ const CreateEvent = () => {
 
     /*
      * This size limit prevents very large Base64 images from being sent
-     * to the backend. Two megabytes is enough for the demo.
+     * to the backend. Size set to Two megabytes.
      */
     if (selectedFile.size > 2 * 1024 * 1024) {
       setError("The flyer image must be smaller than 2 MB.");
@@ -132,11 +132,6 @@ const CreateEvent = () => {
       0
     );
 
-    /*
-     * JavaScript normally changes invalid dates automatically.
-     * For example, February 31 could become a date in March.
-     * These comparisons prevent that behavior.
-     */
     const isValidDate =
       eventDate.getFullYear() === year &&
       eventDate.getMonth() === month - 1 &&
@@ -177,7 +172,7 @@ const CreateEvent = () => {
 
         /*
          * For this demo, the image is converted into a Base64 data URL.
-         * Later, this can be replaced with Cloudinary or Amazon S3.
+         * Later, this can be replaced with whatever we will use (like Amazon S3, etc).
          */
         flyerUrl: flyerFile,
       };
@@ -185,8 +180,8 @@ const CreateEvent = () => {
       await addEvent(newEvent);
 
       /*
-       * Navigating to Home causes the Home page to display the updated
-       * event list from EventContext or request it from the backend.
+       * Navigating to Home will have the Home page display the updated
+       * event list from EventContext or request it from the backend. FIXED.
        */
       navigate("/", {
         state: {

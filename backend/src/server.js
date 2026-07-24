@@ -1,18 +1,26 @@
 import dotenv from "dotenv";
 import connectDB from "./config/database.js";
 import app from "./app.js";
-import syncEventsJob from "./jobs/syncEventsJob.js";
-
+/* removed 'import syncEventsJob from "./jobs/syncEventsJob.js";' because server would crash
+* We can re-add it later when we have a working syncEventsJob.js file.
+* This is for the google maps API integration.
+*/
 
 dotenv.config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-// Establish connection to MongoDB
-connectDB();
+const startServer = async () => {
+  try {
+    await connectDB();
 
-syncEventsJob(); // Start event synchronization job
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Server failed to start:", error.message);
+    process.exit(1);
+  }
+};
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+startServer();

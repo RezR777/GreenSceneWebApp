@@ -1,8 +1,10 @@
 import api from "./api";
 
-export const sendMessage = (message) =>
-    api.post("/chatbot", {
-      message,
-    });
+export async function sendMessage(messages, events = []) {
+  const response = await api.post("/chatbot", {
+    messages,
+    events,
+  });
 
-
+  return response.data;
+}
