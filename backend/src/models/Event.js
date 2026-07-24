@@ -1,36 +1,78 @@
 import mongoose from "mongoose";
 
-/*
-For Event Model:
-  - Campus events will be stored by the event organizers
-  - Admin approval is required before publishing
-*/
-
-const EventSchema = new mongoose.Schema(
+const eventSchema = new mongoose.Schema(
   {
-    title: String,
-    description: String,
-    date: Date,
-    location: String,
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
-    // provided Google Map link for navigation
-    googleMapsLink: String,
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
-    tags: [String],
+    // Contains both the date and start time.
+    date: {
+      type: Date,
+      required: true,
+    },
+
+    durationMinutes: {
+      type: Number,
+      default: 60,
+      min: 15,
+    },
+
+    location: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    googleMapsLink: {
+      type: String,
+      default: "",
+    },
+
+    participants: {
+      type: [String],
+      default: [],
+    },
+
+    notifyParticipants: {
+      type: Boolean,
+      default: false,
+    },
+
+    tags: {
+      type: [String],
+      default: [],
+    },
+
+    // We will use a default picture until real file uploading is added.
+    flyerUrl: {
+      type: String,
+      default: "",
+    },
 
     status: {
       type: String,
       enum: ["pending", "approved", "rejected"],
-      default: "pending"
+      default: "pending",
     },
 
     organizer: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
+      ref: "User",
+      default: null,
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-export default mongoose.model("Event", EventSchema);
-
+export default mongoose.model("Event", eventSchema);

@@ -1,27 +1,66 @@
+import { useEffect, useRef } from "react";
+
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 
-function ChatWindow({ messages, onSendMessage }) {
+function ChatWindow({
+  messages,
+  onSendMessage,
+  onClose,
+  isLoading = false,
+}) {
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [messages, isLoading]);
+
   return (
-    <section className="chat-window">
-      <div className="chat-header">
+    <section className="chat-window" aria-label="Scrappy AI chat">
+      <header className="chat-header">
         <div>
-          <h1>Scrappy AI</h1>
+          <h2>Scrappy AI</h2>
           <p>Your GreenScene event assistant</p>
         </div>
-      </div>
 
-      <div className="chat-messages">
+        <button
+          type="button"
+          className="chat-close-button"
+          onClick={onClose}
+          aria-label="Close Scrappy AI"
+        >
+          ×
+        </button>
+      </header>
+
+      <div className="chat-messages" aria-live="polite">
         {messages.map((message, index) => (
           <MessageBubble
-            key={index}
+            key={`${message.sender}-${index}`}
             sender={message.sender}
             text={message.text}
           />
         ))}
+
+        {isLoading && (
+          <div className="message-row bot-row">
+            <div className="typing-indicator" aria-label="Scrappy is typing">
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        )}
+
+        <div ref={bottomRef} />
       </div>
 
-      <ChatInput onSendMessage={onSendMessage} />
+      <ChatInput
+        onSendMessage={onSendMessage}
+        disabled={isLoading}
+      />
     </section>
   );
 }
