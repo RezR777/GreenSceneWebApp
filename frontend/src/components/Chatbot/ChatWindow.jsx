@@ -1,7 +1,7 @@
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 
-function ChatWindow({ messages, onSendMessage }) {
+function ChatWindow({ messages, onSendMessage, isSending }) {
   return (
     <section className="chat-window">
       <div className="chat-header">
@@ -19,9 +19,10 @@ function ChatWindow({ messages, onSendMessage }) {
             text={message.text}
           />
         ))}
+        {isSending && <MessageBubble sender="bot" text="Typing..." />}
       </div>
 
-      <ChatInput onSendMessage={onSendMessage} />
+      <ChatInput onSendMessage={onSendMessage} disabled={isSending} />
     </section>
   );
 }
