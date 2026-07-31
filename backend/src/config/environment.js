@@ -28,6 +28,23 @@ const environment = {
 
     EMAIL_PASSWORD:
         process.env.EMAIL_PASSWORD,
+
+    // AI Assistant ("Scrappy AI") config
+    // AI_PROVIDER selects which LLM backend to use: "claude" or "openai"
+    AI_PROVIDER:
+        process.env.AI_PROVIDER || "claude",
+
+    ANTHROPIC_API_KEY:
+        process.env.ANTHROPIC_API_KEY,
+
+    ANTHROPIC_MODEL:
+        process.env.ANTHROPIC_MODEL || "claude-sonnet-4-6",
+
+    OPENAI_API_KEY:
+        process.env.OPENAI_API_KEY,
+
+    OPENAI_MODEL:
+        process.env.OPENAI_MODEL || "gpt-4o-mini",
 };
 
 export default environment;
